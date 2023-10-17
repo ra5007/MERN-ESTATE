@@ -1,25 +1,28 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+
+import connectMongoDb from './connection.js'
 import userRouter from './routes/user.routes.js'
 import authRouter from './routes/auth.routes.js'
 
 dotenv.config();
+const app = express();
+const PORT = 9000;
 
-mongoose.connect(process.env.MONGO)
-.then(()=>{
-    console.log("connected to the db")
+
+//Connection
+connectMongoDb(process.env.MONGO).then(()=>{
+    console.log("Mongodb conncted!")
 }).catch((error)=>{
     console.log("not connected",error);
-});
-
-const app = express();
+})
 
 app.use(express.json());
 
-app.listen(9000,()=>{
+app.listen(PORT,()=>{
     console.log('server is running on port 9000');
 })
 
+//Routes
 app.use("/api/user",userRouter);
 app.use("/api/auth",authRouter);
