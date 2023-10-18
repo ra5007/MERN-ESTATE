@@ -1,5 +1,5 @@
-/* eslint-disable no-underscore-dangle */
 import User from '../models/user.model.js';
+/* eslint-disable no-underscore-dangle */
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
@@ -17,7 +17,7 @@ export const signup = async (req, res, next) => {
 };
 
 export const signin = async (req, res, next) => {
-  const { email,  password } = req.body;
+  const { email, password } = req.body;
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) return next(errorHandler(404, 'User not found!'));
@@ -28,6 +28,7 @@ export const signin = async (req, res, next) => {
     res
       .cookie('access_token', token, { httpOnly: true })
       .status(200)
+      .setHeader('Cache-Control', 'public, max-age=31536000')
       .json(rest);
   } catch (error) {
     next(error);

@@ -20,7 +20,7 @@ connectMongoDb(process.env.MONGO).then(() => {
 app.use(express.json());
 
 app.listen(PORT, () => {
-  console.log('server is running on port 9000');
+  console.log(`server is running on port ${PORT}`);
 });
 
 // Routes
