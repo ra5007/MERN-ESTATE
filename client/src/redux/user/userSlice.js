@@ -7,10 +7,10 @@ const initialState = {
 }
 
 const userSlice = createSlice({
-    name:'user',
+    name:'user', 
     initialState,
     reducers:{
-        signInStart: (state,)=>{
+        signInStart: (state)=>{
             state.loading = true
         },
         signInSuccess: (state,action)=>{

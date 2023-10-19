@@ -1,3 +1,4 @@
+import apicache from 'apicache';
 /* eslint-disable import/order */
 /* eslint-disable import/extensions */
 import authRouter from './routes/auth.routes.js';
@@ -6,6 +7,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import userRouter from './routes/user.routes.js';
 
+const cache = apicache.middleware;
 dotenv.config();
 const app = express();
 const PORT = 9000;
@@ -18,6 +20,7 @@ connectMongoDb(process.env.MONGO).then(() => {
 });
 
 app.use(express.json());
+// app.use(cache('500 minutes'));
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
