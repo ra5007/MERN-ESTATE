@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@okta/okta-auth-js": "6.0",
+    "@okta/okta-react": "6.4",
     "apicache": "^1.6.3",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
@@ -19,6 +21,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.2",
     "nodemon": "^3.0.1",
+    "react-router-dom": "^6.18.0",
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
