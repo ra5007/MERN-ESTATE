@@ -10,7 +10,7 @@ import userRouter from './routes/user.routes.js';
 const cache = apicache.middleware;
 dotenv.config();
 const app = express();
-const PORT = 9000;
+const PORT = 9001;
 
 // Connection
 connectMongoDb(process.env.MONGO).then(() => {
